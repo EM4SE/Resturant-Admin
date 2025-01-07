@@ -128,6 +128,9 @@ const Orders = () => {
                     <CTableRow>
                       <CTableHeaderCell>ID</CTableHeaderCell>
                       <CTableHeaderCell>Table Number</CTableHeaderCell>
+                      <CTableHeaderCell>Order Type</CTableHeaderCell>
+                      <CTableHeaderCell>Table Assistant</CTableHeaderCell>
+                      <CTableHeaderCell>Customers</CTableHeaderCell>
                       <CTableHeaderCell>Order Date</CTableHeaderCell>
                       <CTableHeaderCell>Total Amount</CTableHeaderCell>
                       <CTableHeaderCell>Status</CTableHeaderCell>
@@ -139,6 +142,9 @@ const Orders = () => {
                       <CTableRow key={order.id}>
                         <CTableDataCell>{order.id}</CTableDataCell>
                         <CTableDataCell>Table {order.tableNumber}</CTableDataCell>
+                        <CTableDataCell>{order.orderType}</CTableDataCell>
+                        <CTableDataCell>{order.tableAssistant}</CTableDataCell>
+                        <CTableDataCell>{order.numberOfCustomers}</CTableDataCell>
                         <CTableDataCell>{formatDateTime(order.orderedAt)}</CTableDataCell>
                         <CTableDataCell>{formatCurrency(order.totalAmount)}</CTableDataCell>
                         <CTableDataCell className={getStatusClass(order.orderStatus)}>
@@ -172,6 +178,9 @@ const Orders = () => {
           <CModalBody>
             <div className="mb-3">
               <strong>Table Number:</strong> {currentOrder.tableNumber}<br />
+              <strong>Order Type:</strong> {currentOrder.orderType}<br />
+              <strong>Table Assistant:</strong> {currentOrder.tableAssistant}<br />
+              <strong>Number of Customers:</strong> {currentOrder.numberOfCustomers}<br />
               <strong>Order Date:</strong> {formatDateTime(currentOrder.orderedAt)}<br />
               <strong>Status:</strong> <span className={getStatusClass(currentOrder.orderStatus)}>{currentOrder.orderStatus}</span>
             </div>
