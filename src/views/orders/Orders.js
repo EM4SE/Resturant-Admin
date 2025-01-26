@@ -96,6 +96,10 @@ const Orders = () => {
         return 'text-warning';
       case 'COMPLETED':
         return 'text-success';
+        case 'HOLD':
+        return 'text-danger';
+      case 'PREPARING':
+        return 'text-info'; //
       case 'CANCELLED':
         return 'text-danger';
       default:

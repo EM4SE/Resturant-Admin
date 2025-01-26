@@ -56,6 +56,7 @@ const Categories = React.lazy(() => import('./views/categories/Categories'))
 const Products = React.lazy(() =>import('./views/products/Products'))
 const Tables = React.lazy(() => import('./views/tables/Tables'))
 const Orders = React.lazy(() => import('./views/orders/Orders'))
+const Cashiers = React.lazy(() => import('./views/Staff/Cashiers/Cashiers'));
 
 
 const routes = [
@@ -63,24 +64,11 @@ const routes = [
   { path: '/categories', name: 'Categories', element: Categories},
   {path:'/tables', name: 'Tables', element: Tables},
   {path:'/orders',name:'Orders',element:Orders},
+  { path: '/staff/cashiers', name: 'Cashiers', element: Cashiers },
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/theme/typography', name: 'Typography', element: Typography },
   { path: '/base', name: 'Base', element: Cards, exact: true },
-  { path: '/base/accordion', name: 'Accordion', element: Accordion },
-  { path: '/base/breadcrumbs', name: 'Breadcrumbs', element: Breadcrumbs },
-  { path: '/base/cards', name: 'Cards', element: Cards },
-  { path: '/base/carousels', name: 'Carousel', element: Carousels },
-  { path: '/base/collapses', name: 'Collapse', element: Collapses },
-  { path: '/base/list-groups', name: 'List Groups', element: ListGroups },
-  { path: '/base/navs', name: 'Navs', element: Navs },
-  { path: '/base/paginations', name: 'Paginations', element: Paginations },
-  { path: '/base/placeholders', name: 'Placeholders', element: Placeholders },
-  { path: '/base/popovers', name: 'Popovers', element: Popovers },
-  { path: '/base/progress', name: 'Progress', element: Progress },
-  { path: '/base/spinners', name: 'Spinners', element: Spinners },
-  { path: '/base/tabs', name: 'Tabs', element: Tabs },
-  { path: '/base/tooltips', name: 'Tooltips', element: Tooltips },
   { path: '/buttons', name: 'Buttons', element: Buttons, exact: true },
   { path: '/buttons/buttons', name: 'Buttons', element: Buttons },
   { path: '/buttons/dropdowns', name: 'Dropdowns', element: Dropdowns },
