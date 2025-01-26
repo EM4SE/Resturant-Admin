@@ -167,66 +167,68 @@ const Orders = () => {
 
       {/* View Bill Modal */}
       {currentOrder && (
-        <CModal 
-          visible={viewModalVisible} 
-          onClose={() => setViewModalVisible(false)}
-          size="lg"
-        >
-          <CModalHeader>
-            <h5>Bill Details - Order #{currentOrder.id}</h5>
-          </CModalHeader>
-          <CModalBody>
-            <div className="mb-3">
-              <strong>Table Number:</strong> {currentOrder.tableNumber}<br />
-              <strong>Order Type:</strong> {currentOrder.orderType}<br />
-              <strong>Table Assistant:</strong> {currentOrder.tableAssistant}<br />
-              <strong>Number of Customers:</strong> {currentOrder.numberOfCustomers}<br />
-              <strong>Order Date:</strong> {formatDateTime(currentOrder.orderedAt)}<br />
-              <strong>Status:</strong> <span className={getStatusClass(currentOrder.orderStatus)}>{currentOrder.orderStatus}</span>
-            </div>
-            
-            {loadingItems ? (
-              <div>Loading items...</div>
-            ) : (
-              <>
-                <CTable bordered>
-                  <CTableHead>
-                    <CTableRow>
-                      <CTableHeaderCell>Item Name</CTableHeaderCell>
-                      <CTableHeaderCell>Quantity</CTableHeaderCell>
-                      <CTableHeaderCell>Unit Price</CTableHeaderCell>
-                      <CTableHeaderCell>Total Price</CTableHeaderCell>
-                    </CTableRow>
-                  </CTableHead>
-                  <CTableBody>
-                    {orderItems.map((item) => (
-                      <CTableRow key={item.id}>
-                        <CTableDataCell>{item.itemName}</CTableDataCell>
-                        <CTableDataCell>{item.quantity}</CTableDataCell>
-                        <CTableDataCell>{formatCurrency(item.unitPrice)}</CTableDataCell>
-                        <CTableDataCell>{formatCurrency(item.totalPrice)}</CTableDataCell>
-                      </CTableRow>
-                    ))}
-                    <CTableRow>
-                      <CTableDataCell colSpan="3" className="text-end">
-                        <strong>Total Amount:</strong>
-                      </CTableDataCell>
-                      <CTableDataCell>
-                        <strong>{formatCurrency(currentOrder.totalAmount)}</strong>
-                      </CTableDataCell>
-                    </CTableRow>
-                  </CTableBody>
-                </CTable>
-              </>
-            )}
-          </CModalBody>
-          <CModalFooter>
-            <CButton color="secondary" onClick={() => setViewModalVisible(false)}>
-              Close
-            </CButton>
-          </CModalFooter>
-        </CModal>
+  <CModal 
+    visible={viewModalVisible} 
+    onClose={() => setViewModalVisible(false)}
+    size="lg"
+  >
+    <CModalHeader>
+      <h5>Bill Details - Order #{currentOrder.id}</h5>
+    </CModalHeader>
+    <CModalBody>
+      <div className="mb-3">
+        <strong>Table Number:</strong> {currentOrder.tableNumber}<br />
+        <strong>Order Type:</strong> {currentOrder.orderType}<br />
+        <strong>Table Assistant:</strong> {currentOrder.tableAssistant}<br />
+        <strong>Number of Customers:</strong> {currentOrder.numberOfCustomers}<br />
+        <strong>Order Date:</strong> {formatDateTime(currentOrder.orderedAt)}<br />
+        <strong>Status:</strong> <span className={getStatusClass(currentOrder.orderStatus)}>{currentOrder.orderStatus}</span>
+      </div>
+      
+      {loadingItems ? (
+        <div>Loading items...</div>
+      ) : (
+        <CTable bordered>
+          <CTableHead>
+            <CTableRow>
+              <CTableHeaderCell>Item Name</CTableHeaderCell>
+              <CTableHeaderCell>Special Note</CTableHeaderCell>
+              <CTableHeaderCell>Quantity</CTableHeaderCell>
+              <CTableHeaderCell>Unit Price</CTableHeaderCell>
+              <CTableHeaderCell>Total Price</CTableHeaderCell>
+              
+            </CTableRow>
+          </CTableHead>
+          <CTableBody>
+            {orderItems.map((item) => (
+              <CTableRow key={item.id}>
+                <CTableDataCell>{item.itemName}</CTableDataCell>
+                <CTableDataCell>{item.specialNote || '-'}</CTableDataCell>
+                <CTableDataCell>{item.quantity}</CTableDataCell>
+                <CTableDataCell>{formatCurrency(item.unitPrice)}</CTableDataCell>
+                <CTableDataCell>{formatCurrency(item.totalPrice)}</CTableDataCell>
+                
+              </CTableRow>
+            ))}
+            <CTableRow>
+              <CTableDataCell colSpan="4" className="text-end">
+                <strong>Total Amount:</strong>
+              </CTableDataCell>
+              <CTableDataCell>
+                <strong>{formatCurrency(currentOrder.totalAmount)}</strong>
+              </CTableDataCell>
+            </CTableRow>
+          </CTableBody>
+        </CTable>
       )}
+    </CModalBody>
+    <CModalFooter>
+      <CButton color="secondary" onClick={() => setViewModalVisible(false)}>
+        Close
+      </CButton>
+    </CModalFooter>
+  </CModal>
+)}
     </>
   );
 };
