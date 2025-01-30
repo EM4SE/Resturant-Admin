@@ -75,11 +75,6 @@ const _nav = [
         name: 'Cashiers',
         to: '/staff/cashiers',
       },
-      {
-        component: CNavItem,
-        name: 'Breadcrumb',
-        to: '/base/breadcrumbs',
-      }
     ],
   },
 ]
